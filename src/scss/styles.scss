@@ -1,0 +1,100 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+$primary-color: lightblue;
+$secondary-color: lightcyan;
+
+.main {
+    background-color: $primary-color;
+    height: 90vh;
+    width: 90vw;
+    border-radius: 20px;    
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    margin: 20px auto;
+    max-width: 1500px;
+    min-height: 750px;
+    padding: 30px 0;
+}
+
+.navbar {
+    border-radius: 5px;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+        max-width: 80px;
+        padding: 15px 0;
+        background-color: $secondary-color;
+        border-radius: 0 5px 5px 0;
+    }
+    .navbar-toggler{
+        background-color: white;
+    }
+    .nav-link{
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+        color: black;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .letters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Erica One', cursive;
+        overflow: hidden;
+        color: white;
+        -webkit-text-stroke: 2px black;
+        *{
+            padding: 5px;
+        }
+
+        #t {
+            font-size: 35px;
+            transform: rotate(-15deg);
+        }
+        #o1 {
+            font-size: 35px;
+            transform: rotate(15deg);
+        }
+        #d {
+            font-size: 35px;
+            transform: rotate(-10deg);
+        }
+        #o2 {
+            font-size: 35px;
+            transform: rotate(10deg);
+        }
+        #exclaim {
+            font-size: 35px;
+            transform: rotate(10deg);
+        }
+    }
+    .add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 56px;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 2em;
+        color: #0000008C;
+        border-style: none;
+    }
+}
+
+
+.content {
+    padding: 20px;
+    border-radius: 5px 1px 1px 5px;
+    background-color: $secondary-color;
+    margin-left: 20px;
+    overflow: auto;
+}
