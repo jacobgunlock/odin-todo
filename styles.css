@@ -10770,7 +10770,7 @@ textarea.form-control-lg {
   }
 }
 .main {
-  background-color: lightblue;
+  background-color: skyblue;
   height: 90vh;
   width: 90vw;
   border-radius: 20px;
@@ -10781,6 +10781,7 @@ textarea.form-control-lg {
   max-width: 1500px;
   min-height: 750px;
   padding: 30px 0;
+  box-shadow: 1px 1px 6px;
 }
 
 .navbar {
@@ -10789,23 +10790,22 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   padding: 0;
+  background-color: lightblue;
 }
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
   display: flex;
   justify-content: center;
   max-width: 80px;
   padding: 15px 0;
-  background-color: lightcyan;
   border-radius: 0 5px 5px 0;
 }
 .navbar .navbar-toggler {
   background-color: white;
 }
-.navbar .nav-link {
-  display: flex;
-  justify-content: center;
-  margin: 10px 0;
-  color: black;
+.navbar .navbtn {
+  margin: 20px;
+  font-size: 1em;
+  border-radius: 5px;
 }
 .navbar .navbar-toggler:focus {
   box-shadow: none;
@@ -10855,10 +10855,43 @@ textarea.form-control-lg {
   border-style: none;
 }
 
-.content {
+.tab-header {
+  font-family: "Erica One", cursive;
+  letter-spacing: 1px;
+  color: white;
+  -webkit-text-stroke: 2px skyblue;
   padding: 20px;
   border-radius: 5px 1px 1px 5px;
-  background-color: lightcyan;
+  background-color: lightblue;
   margin-left: 20px;
+}
+
+.list-item {
+  background-color: white;
+  border-radius: 5px 0 0 5px;
+  padding: 16px 20px;
+  margin: 10px 0 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion {
   overflow: auto;
+}
+.accordion .accordion-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion .accordion-item {
+  margin: 10px 0 10px 20px;
+  border-radius: 5px 0 0 5px;
+}
+
+.note-div {
+  display: flex;
+}
+.note-div p {
+  margin: 0 10px;
 }/*# sourceMappingURL=styles.css.map */
