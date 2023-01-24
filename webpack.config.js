@@ -6,6 +6,7 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
+    devtool: "source-map",
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         port: 8080,
