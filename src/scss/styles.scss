@@ -15,8 +15,18 @@ $secondary-color: lightblue;
     min-height: 750px;
     padding: 30px 0;
     box-shadow: 1px 1px 6px;
-}
 
+}
+.container-fluid{
+    .add-btn {
+        height: 40px;
+        width: 40px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 .navbar {
     border-radius: 5px;
     width: 80px;
@@ -35,7 +45,7 @@ $secondary-color: lightblue;
         background-color: white;
     }
     .navbtn{
-        margin: 20px;
+        margin: 20px 0;
         font-size: 1em;
         border-radius: 5px;
     }
@@ -77,18 +87,19 @@ $secondary-color: lightblue;
             transform: rotate(10deg);
         }
     }
-    .add {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 56px;
-        background-color: white;
-        border-radius: 5px;
-        font-size: 2em;
-        color: #0000008C;
-        border-style: none;
-    }
+}
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 56px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 2em;
+    color: #0000008C;
+    border-style: none;
+    margin: 20px auto;
 }
 .tab-header {
     font-family: 'Erica One', cursive;
@@ -108,20 +119,23 @@ $secondary-color: lightblue;
     margin: 10px 0 10px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;}
+    align-items: center;
+}
 
 .accordion {
     overflow: auto;
     
     .accordion-body{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        margin: 0;
+        padding: 0;
     }
     
     .accordion-item {
         margin: 10px 0 10px 20px;
         border-radius: 5px 0 0 5px;
+    }
+    .list-item{
+        margin: 0;
     }
 }
 
@@ -132,3 +146,19 @@ $secondary-color: lightblue;
     }
 }
 
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .todo-title{
+        margin: 20px;
+    }
+    .todo-date,
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        margin: auto;
+    }
+}
