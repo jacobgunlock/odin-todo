@@ -10784,6 +10784,15 @@ textarea.form-control-lg {
   box-shadow: 1px 1px 6px;
 }
 
+.container-fluid .add-btn, .container-sm .add-btn, .container-md .add-btn, .container-lg .add-btn, .container-xl .add-btn, .container-xxl .add-btn {
+  height: 40px;
+  width: 40px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar {
   border-radius: 5px;
   width: 80px;
@@ -10803,7 +10812,7 @@ textarea.form-control-lg {
   background-color: white;
 }
 .navbar .navbtn {
-  margin: 20px;
+  margin: 20px 0;
   font-size: 1em;
   border-radius: 5px;
 }
@@ -10842,7 +10851,8 @@ textarea.form-control-lg {
   font-size: 35px;
   transform: rotate(10deg);
 }
-.navbar .add {
+
+.add {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10853,6 +10863,7 @@ textarea.form-control-lg {
   font-size: 2em;
   color: rgba(0, 0, 0, 0.5490196078);
   border-style: none;
+  margin: 20px auto;
 }
 
 .tab-header {
@@ -10880,13 +10891,15 @@ textarea.form-control-lg {
   overflow: auto;
 }
 .accordion .accordion-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 .accordion .accordion-item {
   margin: 10px 0 10px 20px;
   border-radius: 5px 0 0 5px;
+}
+.accordion .list-item {
+  margin: 0;
 }
 
 .note-div {
@@ -10894,4 +10907,21 @@ textarea.form-control-lg {
 }
 .note-div p {
   margin: 0 10px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.modal-body .todo-title {
+  margin: 20px;
+}
+.modal-body .todo-date,
+.modal-body label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin: auto;
 }/*# sourceMappingURL=styles.css.map */

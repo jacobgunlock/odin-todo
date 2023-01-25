@@ -34,11 +34,30 @@
                 <h1 id="exclaim">!</h1>
             </div>
             <div class="container-fluid">
-                <button class="add">+</button>
+                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#modal">+</button>
             </div> 
         </nav>
         <div class="content"></div>
     </div>
+    <div class="modal fade" id="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="todo-title" placeholder="To-Do">
+              <label for="date">Date</label>
+              <input type="date" class="todo-date" placeholder="Date">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="save-btn btn btn-primary" data-bs-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 <script src="./main.js"></script>
 </html>
