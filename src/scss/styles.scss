@@ -1,6 +1,11 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 $primary-color: skyblue;
 $secondary-color: lightblue;
+.content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 20px;
+}
 
 .main {
     background-color: $primary-color;
@@ -29,7 +34,7 @@ $secondary-color: lightblue;
 }
 .navbar {
     border-radius: 5px;
-    width: 80px;
+    width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -38,7 +43,6 @@ $secondary-color: lightblue;
     .container-fluid {
         display: flex;
         justify-content: center;
-        max-width: 80px;
         padding: 0;
         border-radius: 0 5px 5px 0;
     }
@@ -46,9 +50,18 @@ $secondary-color: lightblue;
         background-color: white;
     }
     .navbtn{
-        margin: 10px 0;
+        font-family: 'Erica One', cursive;
+        -webkit-text-stroke: 0.5px black;
+        margin: 15px 0;
         font-size: 1em;
         border-radius: 5px;
+        border: none;
+        background-color: transparent;
+        color: white;
+    }
+
+    .navbtn:hover {
+        transform: scale(1.2);
     }
 
     .navbar-toggler:focus {
@@ -56,9 +69,6 @@ $secondary-color: lightblue;
     }
 
     .letters {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin: 20px 0;
         font-family: 'Erica One', cursive;
         overflow: hidden;
@@ -69,23 +79,23 @@ $secondary-color: lightblue;
         }
 
         #t {
-            font-size: 35px;
+            font-size: 30px;
             transform: rotate(-15deg);
         }
         #o1 {
-            font-size: 35px;
+            font-size: 30px;
             transform: rotate(15deg);
         }
         #d {
-            font-size: 35px;
+            font-size: 30px;
             transform: rotate(-10deg);
         }
         #o2 {
-            font-size: 35px;
+            font-size: 30px;
             transform: rotate(10deg);
         }
         #exclaim {
-            font-size: 35px;
+            font-size: 30px;
             transform: rotate(10deg);
         }
     }
@@ -122,11 +132,17 @@ $secondary-color: lightblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .del-btn{
+        margin-left: 5px;
+    }
+}
+.list-item:hover {
+    background-color: #eee;
 }
 
-.accordion {
-    overflow: auto;
-    
+.accordion {    
+
     .accordion-body{
         margin: 0;
         padding: 0;
@@ -135,9 +151,21 @@ $secondary-color: lightblue;
     .accordion-item {
         margin: 10px 0 10px 20px;
         border-radius: 5px 0 0 5px;
-    }
-    .list-item{
-        margin: 0;
+        
+        .accordion-header>* {
+            font-weight: bold;
+        }
+
+        .todo-div {
+            display: grid;
+            grid-template-columns: 4fr 2fr 2fr;
+            input {
+                border: none;
+                border: solid 1px;
+                border-radius: 5px;
+                padding: 5px;
+            }
+        }
     }
 }
 

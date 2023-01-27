@@ -10769,6 +10769,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: 20px;
+}
+
 .main {
   background-color: skyblue;
   height: 90vh;
@@ -10795,7 +10801,7 @@ textarea.form-control-lg {
 
 .navbar {
   border-radius: 5px;
-  width: 80px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -10805,7 +10811,6 @@ textarea.form-control-lg {
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl, .navbar .container-xxl {
   display: flex;
   justify-content: center;
-  max-width: 80px;
   padding: 0;
   border-radius: 0 5px 5px 0;
 }
@@ -10813,17 +10818,22 @@ textarea.form-control-lg {
   background-color: white;
 }
 .navbar .navbtn {
-  margin: 10px 0;
+  font-family: "Erica One", cursive;
+  -webkit-text-stroke: 0.5px black;
+  margin: 15px 0;
   font-size: 1em;
   border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+.navbar .navbtn:hover {
+  transform: scale(1.2);
 }
 .navbar .navbar-toggler:focus {
   box-shadow: none;
 }
 .navbar .letters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 20px 0;
   font-family: "Erica One", cursive;
   overflow: hidden;
@@ -10834,23 +10844,23 @@ textarea.form-control-lg {
   padding: 5px;
 }
 .navbar .letters #t {
-  font-size: 35px;
+  font-size: 30px;
   transform: rotate(-15deg);
 }
 .navbar .letters #o1 {
-  font-size: 35px;
+  font-size: 30px;
   transform: rotate(15deg);
 }
 .navbar .letters #d {
-  font-size: 35px;
+  font-size: 30px;
   transform: rotate(-10deg);
 }
 .navbar .letters #o2 {
-  font-size: 35px;
+  font-size: 30px;
   transform: rotate(10deg);
 }
 .navbar .letters #exclaim {
-  font-size: 35px;
+  font-size: 30px;
   transform: rotate(10deg);
 }
 
@@ -10888,10 +10898,14 @@ textarea.form-control-lg {
   justify-content: space-between;
   align-items: center;
 }
-
-.accordion {
-  overflow: auto;
+.list-item .del-btn {
+  margin-left: 5px;
 }
+
+.list-item:hover {
+  background-color: #eee;
+}
+
 .accordion .accordion-body {
   margin: 0;
   padding: 0;
@@ -10900,8 +10914,18 @@ textarea.form-control-lg {
   margin: 10px 0 10px 20px;
   border-radius: 5px 0 0 5px;
 }
-.accordion .list-item {
-  margin: 0;
+.accordion .accordion-item .accordion-header > * {
+  font-weight: bold;
+}
+.accordion .accordion-item .todo-div {
+  display: grid;
+  grid-template-columns: 4fr 2fr 2fr;
+}
+.accordion .accordion-item .todo-div input {
+  border: none;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .note-div {

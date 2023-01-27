@@ -1,6 +1,7 @@
 import { notesArr, projArr } from "./main";
 
-export function createNote(text) {
+export function createNote(text, date) {
+    console.log(date);
     const note = document.createElement('div');
 
     const noteDiv = document.createElement('div');
@@ -20,11 +21,14 @@ export function createNote(text) {
         btnDiv.classList.add('btn-div');
         
         const del = document.createElement('button');
-        del.classList.add('del-btn');
-        del.innerText = 'del';
+        del.classList.add('del-btn', 'btn-close');
         
+        const todoDate = document.createElement('time');
+        todoDate.innerText = date;
+
         note.appendChild(btnDiv);
         noteDiv.insertBefore(checkbox, para);
+        if (date !== undefined) btnDiv.appendChild(todoDate);
         btnDiv.appendChild(del);
     }
     
@@ -75,6 +79,7 @@ export function createProject(main, i) {
 export function createProjectTodo(item, i) {
     const body = document.createElement('div');
     const collapse = document.createElement('div');
+    const addTodoDiv = document.createElement('div');
     const addTodo = document.createElement('input');
     const addTodoBtn = document.createElement('button');
     const delProjBtn = document.createElement('button');
@@ -82,11 +87,12 @@ export function createProjectTodo(item, i) {
     collapse.classList.add('accordion-collapse', 'collapse');
     collapse.setAttribute('id', `collapse${i}`);
     collapse.setAttribute('data-bs-parent', '.accordion');
+    addTodoDiv.classList.add('todo-div');
     addTodo.setAttribute('type', 'text');
     addTodo.setAttribute('placeholder', 'add todo');
-    addTodoBtn.classList.add('add-todo');
+    addTodoBtn.classList.add('add-todo','btn','btn-outline-success');
     addTodoBtn.innerText = '+'
-    delProjBtn.classList.add('del-project');
+    delProjBtn.classList.add('del-project', 'btn', 'btn-outline-danger');
     delProjBtn.innerText = 'delete project';
     body.classList.add('accordion-body');
     //append
@@ -98,9 +104,10 @@ export function createProjectTodo(item, i) {
         note.classList.add('list-item', `${x}`);
         body.appendChild(note);                
     })
-    body.appendChild(addTodo);
-    body.appendChild(addTodoBtn);
-    body.appendChild(delProjBtn);
+    addTodoDiv.appendChild(addTodo);
+    addTodoDiv.appendChild(addTodoBtn);
+    addTodoDiv.appendChild(delProjBtn);
+    collapse.appendChild(addTodoDiv)
 
     return item;
 }

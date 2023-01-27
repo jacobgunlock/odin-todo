@@ -3,8 +3,9 @@ import { createNote, createPage, createProject, createProjectTodo } from './crea
 
 export const notesArr = [];
 class Note {
-    constructor(note) {
+    constructor(note, date) {
         this.note = note;
+        this.date = date;
         this.isDone = false;
     }
 }
@@ -26,7 +27,7 @@ function displayPage(tab) {
             main.appendChild(note);
         };
         for (let i = 0; i < notesArr.length; i++) {
-            const note = createNote(notesArr[i].note);
+            const note = createNote(notesArr[i].note, notesArr[i].date);
             note.classList.add('list-item');
             note.setAttribute('id', i);
             main.appendChild(note);
@@ -88,17 +89,18 @@ function displayModal(){
         title.innerText = 'New To-Do'
         todoTitle.setAttribute('placeholder', 'Todo');
     }
+    document.querySelector('.todo-title')
 }
 
 function addProjectTodo() {
     const note = this.previousElementSibling;
     const currProj = this.parentNode.parentNode.parentNode.id;
-    projArr[currProj].projectTodos.push(note.value);
+    projArr[currProj].projectTodos.unshift(note.value);
     updateProjTodosDisplay(note)
 }
 
 function updateProjTodosDisplay(note) {
-    const parent = note.parentNode;
+    const parent = note.parentNode.parentNode;
     const input = parent.lastChild.previousElementSibling;
     const todo = createNote(note.value);
     todo.classList.add('list-item');
@@ -113,7 +115,7 @@ function updateProjTodosDisplay(note) {
 function deleteNote() {
     const currTab = document.querySelector('.content').firstChild.id;
     const currNote = this.parentNode.parentNode;
-    const currProj = currNote.parentNode.parentNode.parentNode;
+    const currProj = currNote.parentNode.parentNode;
     if(currTab !== 'Projects') {
         const index = notesArr.findIndex(x => x.note === currNote.firstChild.lastChild.innerText);
         notesArr.splice(index, 1);
@@ -123,6 +125,7 @@ function deleteNote() {
         const listItems = document.querySelectorAll('.list-item');
         listItems.forEach((item, i) => {
             if (item.contains(currNote)) {
+                console.log(currProj.id);
                 projArr[currProj.id].projectTodos.splice(i, 1);
                 currNote.parentNode.removeChild(currNote);
             };
@@ -134,7 +137,6 @@ function deleteProject() {
     const currProj = this.parentNode.parentNode.parentNode;
     projArr.splice(currProj.id, 1);
     currProj.parentNode.removeChild(currProj);
-    console.log(projArr);
     displayPage('Projects');
 }
 
@@ -162,12 +164,13 @@ saveBtn.addEventListener('click', () => {
     const currTab = saveBtn.parentElement.parentElement.id;
     const title = document.querySelector('.todo-title').value;
     const date = document.querySelector('.todo-date').value;
+    if (title === '') return;
     if (currTab !== 'Projects') {
-        const todo = new Note(title)
+        const todo = new Note(title, date)
         notesArr.push(todo);
         displayPage(currTab);
     } else {
-        const project = new Project(title);
+        const project = new Project(title, date);
         projArr.push(project);
         displayPage(currTab);
     }
