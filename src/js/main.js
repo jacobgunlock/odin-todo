@@ -1,6 +1,7 @@
 import * as bootstrap from 'bootstrap';
-import { createNote } from './createNote';
+import { createNote, createPage, createProject, createProjectTodo } from './createNote';
 
+export const notesArr = [];
 class Note {
     constructor(note) {
         this.note = note;
@@ -8,11 +9,7 @@ class Note {
     }
 }
 
-const notesArr = [];
-const testNote = new Note('test note');
-const testNote2 = new Note('test 2');
-notesArr.push(testNote, testNote2);
-
+export const projArr = [];
 class Project {
     constructor(project) {
         this.project = project;
@@ -20,94 +17,57 @@ class Project {
     }
 }
 
-const projArr = [];
+function displayPage(tab) {
+    const main = createPage(tab);
+    if (tab !== 'Projects') {
+        if (notesArr.length === 0) {
+            const note = createNote('No notes!');
+            note.classList.add('list-item');
+            main.appendChild(note);
+        };
+        for (let i = 0; i < notesArr.length; i++) {
+            const note = createNote(notesArr[i].note);
+            note.classList.add('list-item');
+            note.setAttribute('id', i);
+            main.appendChild(note);
+        }
+    }
+    if (tab === 'Projects') {
+        displayProjects(main);
+    };
+    
+    const delBtn = document.querySelectorAll('.del-btn');
+    delBtn.forEach(btn => {
+        btn.addEventListener('click', deleteNote);
+    })
+};
 
-const testProject = new Project('test project');
-const testProject2 = new Project('test project 2');
-
-projArr.push(testProject);
-projArr.push(testProject2);
-
-testProject.projectTodos.push('hey new note');
-testProject.projectTodos.push('and another');
-
+function displayProjects(main) {
+    if (projArr.length === 0) {
+        const note = createNote('No projects!');
+        note.classList.add('list-item');
+        main.appendChild(note);
+    }
+    for (let i = 0; i < projArr.length; i++) {
+        createProject(main, i);
+    }
+    displayProjectTodo();
+}
 
 function displayProjectTodo() {
     const listItems = document.getElementsByClassName('accordion-item');
     const x = document.getElementsByClassName('accordion-collapse');
     Array.from(x).forEach(div => div.innerHTML = '');
+    
     Array.from(listItems).forEach((item, i) => {
-        const body = document.createElement('div');
-        const collapse = document.createElement('div');
-        const addTodo = document.createElement('input');
-        const addTodoBtn = document.createElement('button');
-        
-        collapse.classList.add('accordion-collapse', 'collapse');
-        collapse.setAttribute('id', `collapse${i}`);
-        collapse.setAttribute('data-bs-parent', '.accordion');
-        addTodo.setAttribute('type', 'text');
-        addTodo.setAttribute('placeholder', 'add todo');
-        addTodoBtn.innerText = '+'
-        addTodoBtn.addEventListener('click', addProjectTodo);
-        body.classList.add('accordion-body');
-
-        item.appendChild(collapse);
-        collapse.appendChild(body);
-
-        projArr[i].projectTodos.forEach((todo, x) => {
-            const note = createNote(todo);
-            note.classList.add('list-item', `${x}`);
-            body.appendChild(note);                
-        })
-        body.appendChild(addTodo);
-        body.appendChild(addTodoBtn);
+        const todo = createProjectTodo(item, i);
     })
-}
 
+    const addTodoBtns = document.querySelectorAll('.add-todo');
+    addTodoBtns.forEach(btn => btn.addEventListener('click', addProjectTodo));
 
-
-function displayProjects(main) {
-    for (let i = 0; i < projArr.length; i++) {
-        //create
-        const item = document.createElement('div');
-        const header = document.createElement('h2');
-        const accBtn = document.createElement('button');
-        
-        //set atr
-        main.classList.add('accordion');
-        item.classList.add('accordion-item');
-        item.setAttribute('id', i);
-        header.classList.add('accordion-header');
-        header.setAttribute('id', `heading${i}`);
-        accBtn.classList.add('accordion-button');
-        accBtn.setAttribute('data-bs-toggle', 'collapse');
-        accBtn.setAttribute('data-bs-target', `#collapse${i}`);
-        accBtn.innerText = projArr[i].project;
-        
-        //append
-        main.appendChild(item);
-        item.appendChild(header);
-        header.appendChild(accBtn);
-    } 
-    displayProjectTodo();
-}
-
-function addProjectTodo() {
-    const note = this.previousElementSibling;
-    const currProj = this.parentNode.parentNode.parentNode.id;
-    projArr[currProj].projectTodos.push(note.value);
-    updateProjTodos(note)
-}
-
-function updateProjTodos(note) {
-    const parent = note.parentNode;
-    const input = parent.lastChild.previousElementSibling;
-    const todo = createNote(note.value);
-    todo.classList.add('list-item');
-    parent.insertBefore(todo, input);
-    note.value = '';
-    console.log(projArr);
-
+    const delProjBtn = document.querySelectorAll('.del-project');
+    delProjBtn.forEach(btn => btn.addEventListener('click', deleteProject));
 }
 
 function displayModal(){
@@ -130,29 +90,53 @@ function displayModal(){
     }
 }
 
-function displayPage(tab) {
-    const content = document.querySelector('.content');
-    content.innerHTML = '';
-    const main = document.createElement('div');
-    main.setAttribute('id', tab);
-    const tabHeader = document.createElement('h1');
-    tabHeader.classList.add('tab-header');
-    tabHeader.innerText = tab;
-    
-    content.appendChild(main);
-    main.appendChild(tabHeader);
-    
-    if (tab !== 'Projects') {
-        for (let i = 0; i < notesArr.length; i++) {
-            const note = createNote(notesArr[i].note);
-            note.classList.add('list-item');
-            main.appendChild(note);
-        }
+function addProjectTodo() {
+    const note = this.previousElementSibling;
+    const currProj = this.parentNode.parentNode.parentNode.id;
+    projArr[currProj].projectTodos.push(note.value);
+    updateProjTodosDisplay(note)
+}
+
+function updateProjTodosDisplay(note) {
+    const parent = note.parentNode;
+    const input = parent.lastChild.previousElementSibling;
+    const todo = createNote(note.value);
+    todo.classList.add('list-item');
+    parent.appendChild(todo);
+    note.value = '';
+    const delBtn = document.querySelectorAll('.del-btn');
+    delBtn.forEach(btn => {
+        btn.addEventListener('click', deleteNote);
+    })
+}
+
+function deleteNote() {
+    const currTab = document.querySelector('.content').firstChild.id;
+    const currNote = this.parentNode.parentNode;
+    const currProj = currNote.parentNode.parentNode.parentNode;
+    if(currTab !== 'Projects') {
+        const index = notesArr.findIndex(x => x.note === currNote.firstChild.lastChild.innerText);
+        notesArr.splice(index, 1);
+        currNote.parentNode.removeChild(currNote);
+        displayPage(currTab)
+    } else if (currTab === 'Projects') {
+        const listItems = document.querySelectorAll('.list-item');
+        listItems.forEach((item, i) => {
+            if (item.contains(currNote)) {
+                projArr[currProj.id].projectTodos.splice(i, 1);
+                currNote.parentNode.removeChild(currNote);
+            };
+        })
     }
-    if (tab === 'Projects') {
-        displayProjects(main);
-    };
-};
+}
+
+function deleteProject() {
+    const currProj = this.parentNode.parentNode.parentNode;
+    projArr.splice(currProj.id, 1);
+    currProj.parentNode.removeChild(currProj);
+    console.log(projArr);
+    displayPage('Projects');
+}
 
 //init
 displayPage('Projects');
@@ -188,3 +172,4 @@ saveBtn.addEventListener('click', () => {
         displayPage(currTab);
     }
 })
+

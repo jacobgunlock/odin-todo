@@ -12,7 +12,7 @@ $secondary-color: lightblue;
     grid-template-columns: 80px 1fr;
     margin: 20px auto;
     max-width: 1500px;
-    min-height: 750px;
+    min-height: 720px;
     padding: 30px 0;
     box-shadow: 1px 1px 6px;
 
@@ -32,20 +32,21 @@ $secondary-color: lightblue;
     width: 80px;
     display: flex;
     flex-direction: column;
+    justify-content: start;
     padding: 0;
     background-color: $secondary-color;
     .container-fluid {
         display: flex;
         justify-content: center;
         max-width: 80px;
-        padding: 15px 0;
+        padding: 0;
         border-radius: 0 5px 5px 0;
     }
     .navbar-toggler{
         background-color: white;
     }
     .navbtn{
-        margin: 20px 0;
+        margin: 10px 0;
         font-size: 1em;
         border-radius: 5px;
     }
@@ -58,6 +59,7 @@ $secondary-color: lightblue;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 20px 0;
         font-family: 'Erica One', cursive;
         overflow: hidden;
         color: white;

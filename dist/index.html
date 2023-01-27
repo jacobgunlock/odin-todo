@@ -14,15 +14,20 @@
     <div class="container-fluid main">
         <nav class="navbar">
             <div class="container-fluid">
+                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#modal">+</button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <button class="navbtn" id="home-tab">Home</button>
-                        <button class="navbtn" id="weekly-tab">Weekly</button>
-                        <button class="navbtn" id="monthly-tab">Monthly</button>
-                        <button class="navbtn" id="projects-tab">Projects</button>
+                        <button class="navbtn" id="home-tab" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                            Home</button>
+                        <button class="navbtn" id="weekly-tab" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                            Weekly</button>
+                        <button class="navbtn" id="monthly-tab" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                            Monthly</button>
+                        <button class="navbtn" id="projects-tab" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                            Projects</button>
                     </div>
                 </div>
             </div>
@@ -33,9 +38,6 @@
                 <h1 id="o2">o</h1>
                 <h1 id="exclaim">!</h1>
             </div>
-            <div class="container-fluid">
-                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#modal">+</button>
-            </div> 
         </nav>
         <div class="content"></div>
     </div>
